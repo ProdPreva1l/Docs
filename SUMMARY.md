@@ -4,8 +4,11 @@
 
 ## Fadah
 
-* [Fadah](fadah/fadah/fadah.md)
-  * [Commands & Permissions](fadah/fadah/commands.md)
+* [Fadah](fadah/fadah.md)
+* [Setup](fadah/setup/README.md)
+  * [Database](fadah/setup/database.md)
+  * [Multi Server](fadah/setup/multi-server.md)
+* [Commands & Permissions](fadah/commands.md)
 * [Developer API](fadah/api/README.md)
   * [Accessing Data](fadah/api/accessing-data.md)
   * [Events](fadah/api/events.md)

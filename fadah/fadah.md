@@ -6,7 +6,20 @@ description: >-
 
 # Fadah
 
-**Plugin Features:**
+## Looking for help setting up the plugin?
+
+{% content-ref url="setup/" %}
+[setup](setup/)
+{% endcontent-ref %}
+
+## Are you a developer? Check out the API docs!
+
+{% content-ref url="api/" %}
+[api](api/)
+{% endcontent-ref %}
+
+## **Plugin Features**
+
 * Item Searching
 * Item Filtering
 * Infinite & Configurable Categories
@@ -24,17 +37,12 @@ description: >-
 * Highly Configurable
 * Fast Bug Fixes
 
+## **Plugin Requirements**
 
-**Plugin Requirements:**
-- Vault
-- A Compatible Economy Plugin
+* Vault
+* A Compatible Economy Plugin
 
-**Optional Requirements:**
-- A database (MySQL, MariaDB, MongoDB)
-- Redis
+### **Optional Requirements**
 
-## Are you a developer? Check out the API docs!
-
-{% content-ref url="api/" %}
-[api](api/)
-{% endcontent-ref %}
+* A database (MySQL, MariaDB, MongoDB)
+* Redis
