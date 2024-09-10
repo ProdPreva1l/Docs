@@ -13,6 +13,10 @@
   * [Accessing Data](fadah/api/accessing-data.md)
   * [Events](fadah/api/events.md)
 
+***
+
+* [Dungeons Terminals](dungeons-terminals.md)
+
 ## Fadsb
 
 * [Fadsb](fadsb/fadsb.md)
