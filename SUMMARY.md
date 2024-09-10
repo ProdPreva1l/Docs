@@ -13,9 +13,9 @@
   * [Accessing Data](fadah/api/accessing-data.md)
   * [Events](fadah/api/events.md)
 
-***
+## Dungeons Terminals
 
-* [Dungeons Terminals](dungeons-terminals.md)
+* [Dungeons Terminals](dungeons-terminals/dungeons-terminals.md)
 
 ## Fadsb
 
