@@ -8,6 +8,7 @@
 * [Setup](fadah/setup/README.md)
   * [Database](fadah/setup/database.md)
   * [Multi Server](fadah/setup/multi-server.md)
+  * [Blacklists](fadah/setup/blacklists.md)
 * [Commands & Permissions](fadah/commands.md)
 * [Developer API](fadah/api/README.md)
   * [Accessing Data](fadah/api/accessing-data.md)
