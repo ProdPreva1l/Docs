@@ -26,7 +26,7 @@ Replace LATEST-VERSION with the version found below.
 
 <dependencies>
     <dependency>
-        <groupId>com.github.ProdPreva1l.Fadah</groupId>
+        <groupId>com.github.Finally-A-Decent</groupId>
         <artifactId>API</artifactId>
         <version>LATEST-VERSION</version>
         <scope>provided</scope>
@@ -42,7 +42,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly 'com.github.ProdPreva1l.Fadah:API:LATEST-VERSION'
+    compileOnly 'com.github.Finally-A-Decent.Fadah:API:LATEST-VERSION'
 }
 ```
 {% endtab %}
@@ -54,7 +54,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly("com.github.ProdPreva1l.Fadah:API:LATEST-VERSION")
+    compileOnly("com.github.Finally-A-Decent.Fadah:API:LATEST-VERSION")
 }
 ```
 {% endtab %}
