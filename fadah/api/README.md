@@ -12,11 +12,7 @@ To get started with the API you must add it to your Maven / Gradle Project.
 
 Replace LATEST-VERSION with the version found below.
 
-<div align="left">
-
-<figure><img src="https://jitpack.io/v/ProdPreva1l/Fadah.svg" alt="" width="188"><figcaption></figcaption></figure>
-
-</div>
+<div align="left"><figure><img src="https://jitpack.io/v/ProdPreva1l/Fadah.svg" alt="" width="188"><figcaption></figcaption></figure></div>
 
 {% tabs %}
 {% tab title="Maven" %}
@@ -74,4 +70,8 @@ dependencies {
 
 {% content-ref url="events.md" %}
 [events.md](events.md)
+{% endcontent-ref %}
+
+{% content-ref url="economy.md" %}
+[economy.md](economy.md)
 {% endcontent-ref %}
