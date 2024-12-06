@@ -13,6 +13,7 @@
 * [Developer API](fadah/api/README.md)
   * [Accessing Data](fadah/api/accessing-data.md)
   * [Events](fadah/api/events.md)
+  * [Adding a Economy Hook](fadah/api/adding-a-economy-hook.md)
 
 ## Dungeons Terminals
 
