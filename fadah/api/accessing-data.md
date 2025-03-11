@@ -2,26 +2,15 @@
 description: Access data  using the API.
 ---
 
-# Accessing Data
+# Accessing & Using Data
 
 ## Getting Started
 
-To get data from the API you will need to access the instance of the API. \
-To do this you will need to depend on Fadah. By adding it to your plugin.yml
-
-{% code title="" %}
-```yaml
-name: FadahAPIExample
-version: '1.0'
-
-depend: [Fadah]
-```
-{% endcode %}
-
-You will then need to get the instance of the API.
+You will first need to get the instance of the Fadah API.
 
 <pre class="language-java"><code class="lang-java">import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
+import info.preva1l.fadah.api.AuctionHouseAPI;
 
 public final class FadahAPIExample extends JavaPlugin {
     private AuctionHouseAPI fadahApi;
@@ -35,141 +24,59 @@ public final class FadahAPIExample extends JavaPlugin {
 }
 </code></pre>
 
-## Available Methods
+## Listing Data
+
+Now that you have an instance of the Fadah API we can now access the ListingManager class
 
 ```java
- /**
-  * Get a listing
-  *
-  * @param uuid a valid listing uuid
-  * @return the listing or null if none found
-  * @since 1.0
-  */
- public abstract Listing getListing(UUID uuid);
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
+import org.bukkit.Material
+import org.bukkit.inventory.ItemStack
+import org.bukkit.plugin.java.JavaPlugin;
 
- /**
-  * Get a category
-  *
-  * @param id a valid category id
-  * @return the category or null if none found
-  * @since 1.0
-  */
- public abstract Category getCategory(String id);
+import info.preva1l.fadah.api.AuctionHouseAPI;
+import info.preva1l.fadah.api.managers.ListingManager;
+import info.preva1l.fadah.records.listing.Listing;
+import info.preva1l.fadah.records.listing.ListingBuilder;
+import info.preva1l.fadah.currency.CurrencyRegistry;
 
- /**
-  * Get a players collection box
-  *
-  * @param offlinePlayer a player
-  * @return the collection box or null if no items found for that player
-  * @since 1.0
-  */
- public abstract List<CollectableItem> getCollectionBox(OfflinePlayer offlinePlayer);
+import java.util.List;
 
- /**
-  * Get a players collection box
-  *
-  * @param uuid a players uuid
-  * @return the collection box or null if no items found for that player
-  * @since 1.0
-  */
- public abstract List<CollectableItem> getCollectionBox(UUID uuid);
-
- /**
-  * Get a players expired items
-  *
-  * @param offlinePlayer a player
-  * @return the expired items or null if no items found for that player
-  * @since 1.0
-  */
- public abstract List<CollectableItem> getExpiredItems(OfflinePlayer offlinePlayer);
-
- /**
-  * Get a players expired items
-  *
-  * @param uuid a players uuid
-  * @return the expired items or null if no items found for that player
-  * @since 1.0
-  */
- public abstract List<CollectableItem> getExpiredItems(UUID uuid);
-
- /**
-  * Get a players history
-  *
-  * @param offlinePlayer a player
-  * @return the players history, ordered from newest to oldest
-  */
- public abstract List<HistoricItem> getHistory(OfflinePlayer offlinePlayer);
-
- /**
-  * Get a players history
-  *
-  * @param uuid a player uuid
-  * @return the players history, ordered from newest to oldest
-  */
- public abstract List<HistoricItem> getHistory(UUID uuid);
+public final class FadahAPIExample extends JavaPlugin {
+    @Override
+    public void onEnable() {
+        ListingManager manager = AuctionHouseAPI.getInstance().listingManager();
+        
+        // Getting listings
+        List<Listing> listings = manager.all();
+        
+        // Creating a listing
+        Currency currency = CurrencyRegistry.getAll().getFirst();
+        Player player = Bukkit.getPlayer("Preva1l");
+        ItemStack item = player.getInventory().getItemInMainHand();
+        player.getInventory().setItemInMainHand(new ItemStack(Material.AIR));
+        manager.listingBuilder(player)
+                .price(4_500_000) // 4.5 Million
+                .tax(3.5) // This is a percentage, so 3.5%, the default is 0%
+                .currency(currency) // By default this is the same as what we have it
+                .length(2 * 60 * 60 * 1000) // 2 Hours, this is also a default value
+                .itemStack(item)
+                .biddable(false) // this is false by default, bidding is still W.I.P.
+                .toPost() // theres alot more options you can change in this section
+                .postAdvert(true)
+                .buildAndSubmit().thenAccept(result -> {
+                    if (!result.successful()) {
+                        player.sendMessage(
+                            "Failed to post listing! " + result.message()
+                        );
+                        player.getInventory().setItemInMainHand(item);
+                        return;
+                    }
+                    
+                    player.sendMessage("Listing Posted!");
+                });
+    }
+}
 ```
 
-## Data Objects
-
-### Listing
-
-```java
-@NotNull UUID id;
-@NotNull UUID owner;
-@NotNull String ownerName;
-@NotNull ItemStack itemStack;
-@NotNull String categoryID;
-double price;
-double tax; // % of amount of price to take
-long creationDate; // Epoch milli
-long deletionDate; // Epoch milli
-boolean biddable; // unused
-@NotNull List<Bid> bids; // unused
-```
-
-### Category (For Sorting Listings)
-
-```java
-@NotNull String id
-@NotNull String name
-int priority
-int modelData
-@NotNull Material icon
-@NotNull List<String> description
-@Nullable Set<Material> materials
-boolean isCustomItems
-@Nullable CustomItemMode customItemMode
-@Nullable Set<String> customItemIds
-```
-
-### CollectableItem (Collection Box & Expired Listings)
-
-```java
-ItemStack itemStack
-long dateAdded // Epoch timestamp
-```
-
-### HistoricItem (History Menu)
-
-<pre class="language-java"><code class="lang-java"><strong>@NotNull UUID ownerUUID // the person who the log belongs to
-</strong>@NotNull Long loggedDate // when the action happened, in epoch millis
-<strong>@NotNull LoggedAction action // the action that got logged
-</strong>@NotNull ItemStack itemStack // the item that had an action happen to it
-@Nullable Double price // only used for LISTING_START, LISTING_PURCHASED, LISTING_SOLD
-<strong>@Nullable UUID purchaserUUID // only used for LISTING_SOLD
-</strong></code></pre>
-
-### LoggedAction (For HistoricItem)
-
-```java
-LISTING_START
-LISTING_PURCHASED
-LISTING_SOLD
-LISTING_CANCEL
-LISTING_EXPIRE
-LISTING_ADMIN_CANCEL
-EXPIRED_ITEM_CLAIM
-EXPIRED_ITEM_ADMIN_CLAIM
-COLLECTION_BOX_CLAIM
-COLLECTION_BOX_ADMIN_CLAIM
-```

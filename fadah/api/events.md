@@ -6,20 +6,7 @@ description: Listen for Events via the API.
 
 ## Getting started
 
-To get started listening for events you must setup your project to do so.
-
-Depend on Fadah
-
-{% code title="plugin.yml" %}
-```yaml
-name: FadahAPIExample
-version: '1.0'
-
-depend: [Fadah]
-```
-{% endcode %}
-
-Setup your Main class and Listener class.
+First setup your listeners.
 
 <pre class="language-java" data-title="FadahAPIExample.java"><code class="lang-java">import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.Bukkit;
@@ -67,8 +54,6 @@ public class FadahAPIExampleListener implements Listener {
 {% endcode %}
 
 ## ListingEndEvent
-
-This event is called asyncronously.
 
 <pre class="language-java" data-title="FadahAPIExampleListener.java"><code class="lang-java"><strong>public class FadahAPIExampleListener implements Listener {
 </strong>    @EventHandler

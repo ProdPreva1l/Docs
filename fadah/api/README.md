@@ -6,27 +6,32 @@ description: >-
 
 # Developer API
 
+## Useful Resources
+
+JavaDocs: [https://repo.preva1l.info/javadoc/releases/info/preva1l/fadah/API/latest](https://repo.preva1l.info/javadoc/releases/info/preva1l/fadah/API/latest)\
+Support Server: [https://discord.gg/4KcF7S94HF/](https://discord.gg/4KcF7S94HF)
+
 ## Getting Started
 
 To get started with the API you must add it to your Maven / Gradle Project.
 
 Replace LATEST-VERSION with the version found below.
 
-<div align="left"><figure><img src="https://jitpack.io/v/ProdPreva1l/Fadah.svg" alt="" width="188"><figcaption></figcaption></figure></div>
+<figure><img src="https://badge.fury.io/gh/Finally-A-Decent%2FFadah.svg" alt=""><figcaption></figcaption></figure>
 
 {% tabs %}
 {% tab title="Maven" %}
 ```xml
 <repositories>
     <repository>
-        <id>jitpack</id>
-        <url>https://jitpack.io</url>
+        <id>FinallyADecent</id>
+        <url>https://repo.preva1l.info/releases/</url>
     </repository>
 </repositories>
 
 <dependencies>
     <dependency>
-        <groupId>com.github.Finally-A-Decent</groupId>
+        <groupId>info.preva1l.fadah</groupId>
         <artifactId>API</artifactId>
         <version>LATEST-VERSION</version>
         <scope>provided</scope>
@@ -38,11 +43,11 @@ Replace LATEST-VERSION with the version found below.
 {% tab title="Gradle (Groovy)" %}
 ```gradle
 repositories {
-    maven { url 'https://jitpack.io' }
+    maven { url 'https://repo.preva1l.info/releases' }
 }
 
 dependencies {
-    compileOnly 'com.github.Finally-A-Decent.Fadah:API:LATEST-VERSION'
+    compileOnly 'info.preva1l.fadah:API:LATEST-VERSION'
 }
 ```
 {% endtab %}
@@ -50,19 +55,31 @@ dependencies {
 {% tab title="Gradle (Kotlin)" %}
 ```gradle
 repositories {
-    maven("https://jitpack.io")
+    maven("https://repo.preva1l.info/releases/")
 }
 
 dependencies {
-    compileOnly("com.github.Finally-A-Decent.Fadah:API:LATEST-VERSION")
+    compileOnly("info.preva1l.fadah:API:LATEST-VERSION")
 }
 ```
 {% endtab %}
 {% endtabs %}
 
+### Depending on Fadah
 
+{% code title="plugin.yml" %}
+```yaml
+name: "FadahAPIExample"
+version: "1.0"
+api-version: "1.20"
+main: me.developer.FadahAPIExample
 
-## Using the API
+depend:
+  - "Fadah"
+```
+{% endcode %}
+
+## Next Steps
 
 {% content-ref url="accessing-data.md" %}
 [accessing-data.md](accessing-data.md)

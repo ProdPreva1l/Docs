@@ -11,7 +11,7 @@
   * [Blacklists](fadah/setup/blacklists.md)
 * [Commands & Permissions](fadah/commands.md)
 * [Developer API](fadah/api/README.md)
-  * [Accessing Data](fadah/api/accessing-data.md)
+  * [Accessing & Using Data](fadah/api/accessing-data.md)
   * [Events](fadah/api/events.md)
   * [Adding a Economy Hook](fadah/api/economy.md)
 
